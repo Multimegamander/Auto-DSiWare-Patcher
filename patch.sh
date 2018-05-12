@@ -16,6 +16,14 @@ if [ ! -f ./WfcPatcher.exe ]; then
     exit 0
 fi
 echo "Searching .nds ROMS..."
+if [ ! -e *.nds ]
+then
+    if [ ! -e *.app ]
+	then
+	    echo "No NDS Rom/ DSiWare app found!"
+		echo "Hit enter to exit."
+		read
+		exit 0
 if [ -e *.nds ]
 then
     for f in *.nds
@@ -25,8 +33,6 @@ then
         mono WfcPatcher.exe --domain wiimmfi.de "$f"
         echo "Patch complete!"
     done
-else
-    echo "No NDS Files found :/"
 fi
 echo "Searching .app DSiWares..."
 if [ -e *.app ]
@@ -38,8 +44,6 @@ then
         mono WfcPatcher.exe --domain wiimmfi.de "$h"
         echo "Patch complete!"
     done
-else
-    echo "No app Files found :/"
 fi
 sleep 5
 clear

@@ -1,5 +1,5 @@
 @ECHO OFF
-TITLE Auto DSiWare-Patcher
+TITLE Auto DSiWare-Patcher, created by @ApfelTV and @Multimegamander, thanks to @KcrPL by helping us :)
 COLOR 0F
 
 set /a exiting=10
@@ -36,9 +36,9 @@ echo                                        #$###################@##############
 echo                                       $#$##/#$##############@###############################$$$$$$$$$$$$$$#$$$$$$$$$$$$$$$$$####$$$$
 echo                           ----------------------------------------------------------------------------------------------------------
 echo                           -                                                                                                        -
-echo                           -                                 Auto DSiWare Patcher (Get's ye online)                                           -
+echo                           -                                 Auto DSiWare Patcher (Get's ye online)                                 -
 echo                           -                                                                                                        -
-echo                           -                                  Smash that Enter Button to Continue!                                           -
+echo                           -                                  Smash that Enter Button to Continue!                                  -
 echo                           -                                                                                                        -
 echo                           ----------------------------------------------------------------------------------------------------------
 echo                          #$#########$($$#$$$#####$$@@@@@@@@@@@@@@@@@@@@@@@@@@@#$$$#$$##@@@@@@@@@@@###$$#####$##$$$$$$$$$$$$$$$##
@@ -58,9 +58,9 @@ echo                                          $$$###########$$$$$$$$$$$$$$$$@@@@
 echo                                                #$$$##########$$$$$$$$$$$$$$$$#@@@@@@@@@@$$(/(#$#/##################/*
 echo                                                      #$$$##########$$$$$$$$$$$$$$$$#@@@$$(//(#######((############(*
 echo                                                            #$$$##########$$$$$$$$$$$#$$$(/(#$#(##################(*
-echo                                                                  #$$$$#########$$$$$$$#(//(#$###((((############(*
-echo                                                                        #$$$$#########$$$########################*
-echo                                                                              $$$$$#########$$##################*
+echo                                                                  #$$$$#########$$$$$$$#(//(#$###((((############(*/
+echo                                                                        #$$$$#########$$$#########################*
+echo                                                                              $$$$$#########$$##################*/
 echo                                                                                    #$$$$$#######$$$###########**
 echo                                                                                          #$$@@#$$$$$$$$$#####*/
 echo                                                                                                #$#@$$$$$$$##(*
@@ -73,47 +73,60 @@ cls
 mode 130,35
 color 0F
 cls
-if %cor%==0 echo Let's begin.
-if %cor%==1 echo Let's begin.
+echo Let's begin.
+ping 127.0.0.1 -n 3 >NUL
 echo.
-echo Patching NDS roms...
-set modul=NUL
-set /a patching_file=1
-for %%f in ("*.nds") do set /a file_counter+=1
-set /a repeat=1
-set /a errorrep=0
-set /a rep=0
-cls
-for %%f in ("*.nds") do (
-echo Patching file [!patching_file!] out of [%file_counter%]
-echo File name: %%~nf
-echo.
-set modul=WfcPatcher.exe
-if not exist WfcPatcher.exe goto wfcpatchfail
-WfcPatcher.exe --domain wiimmfi.de "%%f">NUL
-cls
-echo Press Enter to continue
-pause >NUL
+echo Searching nds/app games...
+
+if not exist "*.nds" do (
+   if not exist "*.app" goto no_files_present
 )
-echo Patching nds Roms is done. Now patching DSiWare app files...
-set modul=NUL
-set /a patching_file=1
-for %%f in ("*.app") do set /a file_counter+=1
-set /a repeat=1
-set /a errorrep=0
-set /a rep=0
-cls
-for %%f in ("*.app") do (
-echo Patching file [!patching_file!] out of [%file_counter%]
-echo File name: %%~nf
-echo.
-set modul=WfcPatcher.exe
-if not exist WfcPatcher.exe goto wfcpatchfail
-WfcPatcher.exe --domain wiimmfi.de "%%f">NUL
-cls
-echo Patching Complete!
-echo Press Enter to continue
-pause >NUL
+
+if exist *.nds (
+   echo.
+   echo Patching NDS Roms...
+   echo Smash dat enter button to patch your nds games!
+   pause >NUL
+   set modul=no module
+   set /a patching_file=1
+   for %%f in ("*.nds") do set /a file_counter+=1
+   set /a repeat=1
+   set /a errorrep=0
+   set /a rep=0
+   cls
+   for %%f in ("*.nds") do (
+      echo Patching file [!patching_file!] out of [%file_counter%]
+      echo File name: %%~nf
+      echo.
+      set modul=WfcPatcher.exe
+      if not exist WfcPatcher.exe goto wfcpatchfail
+      WfcPatcher.exe --domain wiimmfi.de "%%f">NUL
+      cls
+   )
+)
+if exist *.app (
+   echo Patching nds Roms is done. Now patching DSiWare app files...
+   echo Smash dat enter button to continue!
+   pause >NUL
+   set modul=no module
+   set /a patching_file=1
+   for %%f in ("*.app") do set /a file_counter+=1
+   set /a repeat=1
+   set /a errorrep=0
+   set /a rep=0
+   cls
+   for %%f in ("*.app") do (
+      echo Patching file [!patching_file!] out of [%file_counter%]
+      echo File name: %%~nf
+      echo.
+      set modul=WfcPatcher.exe
+      if not exist WfcPatcher.exe goto wfcpatchfail
+      WfcPatcher.exe --domain wiimmfi.de "%%f">NUL
+      cls
+      echo Patching Complete!
+      echo Press Enter to continue
+      pause >NUL
+   )
 )
 goto exit_patcher
 
@@ -122,13 +135,17 @@ set fail=0
 if not exist WfcPatcher.exe set fail=1
 goto error_patching
 
+:no_files_present
+set fail=2
+
 :error_patching
 set /a patchingok=0
 color 4F
 cls
+echo.
 echo     /---\    O SHIT!
-echo    /     \  
-echo   /   !   \  There was an error while patching.
+echo    /     \   There was an error while patching.
+echo   /   !   \  
 echo  /         \ 
 echo  ----------- Failing module: %modul%
 echo.
@@ -136,10 +153,13 @@ if %fail%==1 echo Please check that WfcPatcher.exe is in the same directory than
 if %fail%==1 echo Press Enter To exit.
 if %fail%==1 pause >NUL
 if %fail%==1 goto exit_patcher
+if %fail%==2 echo No nds or app files found. Please put your nds roms / app files into the same directory ar the patcher.bat.
+if %fail%==2 echo Press Enter To exit.
+if %fail%==2 pause >NUL
+if %fail%==2 goto exit_patcher
 echo Unknown Failure. Try downloading the patcher again and extract every file out of it.
 echo Press Enter To exit.
 pause >NUL
-goto exit_patcher
 
 :exit_patcher
 cls
@@ -158,6 +178,7 @@ if %exiting%==2 echo :--        : 2
 if %exiting%==1 echo :-         : 1
 if %exiting%==0 echo :          :0
 if %exiting%==0 echo Bye!
+if %exiting%==0 ping localhost -n 2 >NUL
 if %exiting%==0 exit /b 0
 ping localhost -n 2 >NUL
 set /a exiting=%exiting%-1
