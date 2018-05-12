@@ -4,6 +4,8 @@ set /a exiting=10
 set /a cor=0
 set /a patchingnumber=1
 set /a patchingok=1
+set /a rep=0
+set /a errorrep=0
 cls
 
 :nds_present
@@ -73,8 +75,8 @@ echo In order to patch nds file, I need a nds file.
 echo So, if you can, please copy any nds file to this directory where I am.
 echo.
 if $rep$==1 if exist "*.nds" set /a cor=1
-if $rep$==1 if exist "*.nds" goto nds_present
 if $rep$==1 if exist "*.app" set /a cor=1
+if $rep$==1 if exist "*.nds" goto nds_present
 if $rep$==1 if exist "*.app" goto app_present
 if $rep$==1 echo Waiting for .nds files.
 if $rep$==2 echo Waiting for .nds files..
