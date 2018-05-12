@@ -36,9 +36,9 @@ echo                                        #$###################@##############
 echo                                       $#$##/#$##############@###############################$$$$$$$$$$$$$$#$$$$$$$$$$$$$$$$$####$$$$
 echo                           ----------------------------------------------------------------------------------------------------------
 echo                           -                                                                                                        -
-echo                           -                                        Auto DSiWare Patcher                                            -
+echo                           -                                 Auto DSiWare Patcher (Get's ye online)                                           -
 echo                           -                                                                                                        -
-echo                           -                                       Hit Enter to Continue!                                           -
+echo                           -                                  Smash that Enter Button to Continue!                                           -
 echo                           -                                                                                                        -
 echo                           ----------------------------------------------------------------------------------------------------------
 echo                          #$#########$($$#$$$#####$$@@@@@@@@@@@@@@@@@@@@@@@@@@@#$$$#$$##@@@@@@@@@@@###$$#####$##$$$$$$$$$$$$$$$##
@@ -126,7 +126,7 @@ goto error_patching
 set /a patchingok=0
 color 4F
 cls
-echo     /---\    ERROR!
+echo     /---\    O SHIT!
 echo    /     \  
 echo   /   !   \  There was an error while patching.
 echo  /         \ 
