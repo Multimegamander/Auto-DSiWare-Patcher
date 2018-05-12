@@ -15,8 +15,8 @@ color 0F
 cls
 if %cor%==0 echo Let's begin.
 if %cor%==1 echo Let's begin.
-if not exist "*.nds" goto no_files_present
 echo.
+echo Patching NDS roms...
 set modul=NUL
 set /a patching_file=1
 for %%f in ("*.nds") do set /a file_counter+=1
@@ -32,19 +32,10 @@ set modul=WfcPatcher.exe
 if not exist WfcPatcher.exe goto wfcpatchfail
 WfcPatcher.exe --domain wiimmfi.de "%%f">NUL
 cls
-echo Patching Complete!
 echo Press Enter to continue
 pause >NUL
 )
-goto exit_patcher
-
-:app_present
-color 0F
-cls
-if %cor%==0 echo Let's begin.
-if %cor%==1 echo Let's begin.
-if not exist "*.app" goto no_file_present
-echo.
+echo Patching nds Roms is done. Now patching DSiWare app files...
 set modul=NUL
 set /a patching_file=1
 for %%f in ("*.app") do set /a file_counter+=1
@@ -70,26 +61,6 @@ goto exit_patcher
 set fail=0
 if not exist WfcPatcher.exe set fail=1
 goto error_patching
-
-:no_files_present
-color 0F
-cls
-echo Let's begin.
-echo In order to patch nds file, I need a nds file.
-echo So, if you can, please copy any nds file to this directory where I am.
-echo.
-if %rep%==1 if exist "*.nds" set /a cor=1
-if %rep%==1 if exist "*.nds" goto nds_present
-if %rep%==1 if exist "*.app" set /a cor=1
-if %rep%==1 if exist "*.app" goto app_present
-if %rep%==1 echo Waiting for .nds files.
-if %rep%==2 echo Waiting for .nds files..
-if %rep%==3 echo Waiting for .nds files...
-if %rep%==4 echo Waiting for .nds files....
-if %rep%==4 set /a rep=0
-set /a rep=%rep%+1
-ping localhost -n 3 >NUL
-goto no_files_present
 
 :error_patching
 set /a patchingok=0
