@@ -9,7 +9,8 @@ set /a rep=0
 set /a cor=0
 set /a patchingnumber=1
 set /a patchingok=1
-
+set nonds=0
+cls
 color F0
 mode 150,55
 echo.
@@ -90,18 +91,17 @@ if exist *.nds (
    pause >NUL
    set modul=no module
    set /a patching_file=1
-   for %%f in ("*.nds") do set /a file_counter+=1
+   for %%h in ("*.nds") do set /a file_counter+=1
    set /a repeat=1
    set /a errorrep=0
    set /a rep=0
    cls
-   for %%f in ("*.nds") do (
+   for %%h in ("*.nds") do (
       echo Patching file [!patching_file!] out of [%file_counter%]
-      echo File name: %%~nf
-      echo.
+      echo File name: %%~nh
       set modul=WfcPatcher.exe
       if not exist WfcPatcher.exe goto wfcpatchfail
-      WfcPatcher.exe --domain wiimmfi.de "%%f">NUL
+      WfcPatcher.exe --domain wiimmfi.de "%%h"
       cls
    )
 )
@@ -123,7 +123,7 @@ if exist *.app (
       echo.
       set modul=WfcPatcher.exe
       if not exist WfcPatcher.exe goto wfcpatchfail
-      WfcPatcher.exe --domain wiimmfi.de "%%f">NUL
+      WfcPatcher.exe --domain wiimmfi.de "%%f"
       cls
       echo Patching Complete!
       echo Press Enter to continue
