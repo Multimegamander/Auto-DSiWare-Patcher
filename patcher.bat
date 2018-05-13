@@ -1,5 +1,5 @@
 @ECHO OFF
-TITLE Auto DSiWare-Patcher, created by @ApfelTV and @Multimegamander, thanks to @KcrPL by helping us :)
+TITLE Auto DSiWare-Patcher, created by @ApfelTV and @Multimegamander (send me hentai), thanks to @KcrPL by helping us :)
 COLOR 0F
 
 set /a exiting=10
@@ -125,8 +125,8 @@ if exist *.app (
       if not exist WfcPatcher.exe goto wfcpatchfail
       WfcPatcher.exe --domain wiimmfi.de "%%f"
       cls
-      echo Patching Complete!
-      echo Press Enter to continue
+      echo Patching Complete, you are now a proffesional hacker!
+      echo Smash dat enter button to continue!
       pause >NUL
    )
 )
