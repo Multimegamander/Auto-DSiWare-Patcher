@@ -78,7 +78,8 @@ ping 127.0.0.1 -n 3 >NUL
 echo.
 echo Searching nds/app games...
 
-if not exist "*.nds" do (
+if not exist "*.nds" (
+   set nonds=1
    if not exist "*.app" goto no_files_present
 )
 
@@ -105,7 +106,8 @@ if exist *.nds (
    )
 )
 if exist *.app (
-   echo Patching nds Roms is done. Now patching DSiWare app files...
+   if %nonds%==0 echo Patching nds Roms is done. Now patching DSiWare app files...
+   if %nonds%==1 echo Patching DSiWare... 
    echo Smash dat enter button to continue!
    pause >NUL
    set modul=no module
