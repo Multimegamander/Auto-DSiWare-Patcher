@@ -145,7 +145,8 @@ set /a patchingok=0
 color 4F
 cls
 echo.
-echo     /---\    O SHIT!
+echo      /-\     O SHIT!
+echo     /   \    
 echo    /     \   There was an error while patching.
 echo   /   !   \  
 echo  /         \ 
