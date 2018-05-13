@@ -77,7 +77,7 @@ cls
 echo Let's begin.
 ping 127.0.0.1 -n 3 >NUL
 echo.
-echo Searching nds/app games...
+echo Searching for nds/app games...
 
 if not exist "*.nds" (
    set nonds=1
@@ -167,7 +167,7 @@ pause >NUL
 :exit_patcher
 cls
 color 0F
-if %patchingok%==1 echo Patched Files have a (wiimmfi.de) in the name. Use them if you want to use the Patched Game.
+if %patchingok%==1 echo Patched Files have a (wiimmfi.de) in the name. Use those patched boiz if you want to play online and get friends.
 echo Exiting the patcher in...
 if %exiting%==10 echo :----------: 10
 if %exiting%==9 echo :--------- : 9
