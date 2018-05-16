@@ -1,5 +1,5 @@
 # Auto-DSiWare-Patcher
-A Patcher for Patching DS Games and DSiWare!
+A Patcher to get DS/DSi games back online!
 
 [Releases](https://github.com/ApfelTV/Auto-DSiWare-Patcher/releases/)
 
