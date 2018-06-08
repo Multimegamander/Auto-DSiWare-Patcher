@@ -1,5 +1,5 @@
 @ECHO OFF
-TITLE Auto DSiWare-Patcher, created by @ApfelTV and @Multimegamander (send me hentai), thanks to @KcrPL by helping us :)
+TITLE Auto DSiWare-Patcher
 COLOR 0F
 
 set /a exiting=10
@@ -37,9 +37,9 @@ echo                                        #$###################@##############
 echo                                       $#$##/#$##############@###############################$$$$$$$$$$$$$$#$$$$$$$$$$$$$$$$$####$$$$
 echo                           ----------------------------------------------------------------------------------------------------------
 echo                           -                                                                                                        -
-echo                           -                                 Auto DSiWare Patcher (Get's ye online)                                 -
+echo                           -                                         Auto DSiWare Patcher                                           -
 echo                           -                                                                                                        -
-echo                           -                                  Smash dat Enter Button to Continue!                                  -
+echo                           -                                      Press [ENTER] to continue!                                        -
 echo                           -                                                                                                        -
 echo                           ----------------------------------------------------------------------------------------------------------
 echo                          #$#########$($$#$$$#####$$@@@@@@@@@@@@@@@@@@@@@@@@@@@#$$$#$$##@@@@@@@@@@@###$$#####$##$$$$$$$$$$$$$$$##
@@ -87,8 +87,6 @@ if not exist "*.nds" (
 if exist *.nds (
    echo.
    echo Patching NDS Roms...
-   echo Smash dat enter button to patch your nds games!
-   pause >NUL
    set modul=no module
    set /a patching_file=1
    for %%h in ("*.nds") do set /a file_counter+=1
@@ -108,8 +106,6 @@ if exist *.nds (
 if exist *.app (
    if %nonds%==0 echo Patching nds Roms is done. Now patching DSiWare app files...
    if %nonds%==1 echo Patching DSiWare... 
-   echo Smash dat enter button to continue!
-   pause >NUL
    set modul=no module
    set /a patching_file=1
    for %%f in ("*.app") do set /a file_counter+=1
@@ -125,8 +121,8 @@ if exist *.app (
       if not exist WfcPatcher.exe goto wfcpatchfail
       WfcPatcher.exe --domain wiimmfi.de "%%f"
       cls
-      echo Patching Complete, you are now a proffesional hacker!
-      echo Smash dat enter button to continue!
+      echo Patching Complete!
+      echo Press [ENTER] to continue!
       pause >NUL
    )
 )
@@ -149,8 +145,8 @@ echo      /-\     O SHIT!
 echo     /   \    
 echo    /     \   There was an error while patching.
 echo   /   !   \  
-echo  /         \ 
-echo  ----------- Failing module: %modul%
+echo  /         \ Failing module: %modul%
+echo  ----------- 
 echo.
 if %fail%==1 echo Please check that WfcPatcher.exe is in the same directory than patcher.bat.
 if %fail%==1 echo Press Enter To exit.
@@ -167,17 +163,15 @@ pause >NUL
 :exit_patcher
 cls
 color 0F
-if %patchingok%==1 echo Patched Files have a (wiimmfi.de) in the name. Use those patched boiz if you want to play online and get friends.
+if %patchingok%==1 echo Patched Files have a (wiimmfi.de) in the name. Use those patched files if you want to play online.
 echo Exiting the patcher in...
 if %exiting%==3 echo :---       : 3
 if %exiting%==2 echo :--        : 2
 if %exiting%==1 echo :-         : 1
 if %exiting%==0 echo :          :0
-if %exiting%==0 echo Bye, Felicia!
+if %exiting%==0 echo Bye!
 if %exiting%==0 ping localhost -n 2 >NUL
 if %exiting%==0 exit /b 0
 ping localhost -n 2 >NUL
 set /a exiting=%exiting%-1
 goto exit_patcher
-
-
