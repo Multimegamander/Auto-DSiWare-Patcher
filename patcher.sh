@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-echo "Welcome to the Auto-DSiWare-Patcher! With this patcher you can patch a DSiWare .app and/or an NDS ROM (.nds)! Make sure that your NDS and/or app is in the same directory as this patcher.sh!"
+echo "Welcome to the Auto-DSiWare-Patcher! With this patcher you can patch a DSiWare Rom (.app) and/or a DS ROM (.nds)! Make sure that your NDS and/or DsiWare ROM is in the same directory as this patcher.sh!"
 echo "You need mono, so make sure mono is installed!"
 echo "Press [ENTER] to continue."
 read
@@ -19,7 +19,7 @@ if [ ! -e *.nds ]
 then
     if [ ! -e *.app ]
 	then
-	    echo "No NDS Rom/ DSiWare app found!"
+	    echo "No DS Rom / DSiWare Rom found!"
 		echo "Press [ENTER] to exit."
 		read
 		exit 0
@@ -30,9 +30,9 @@ then
     for f in *.nds
     do
         echo "Processing $f..."
-        echo "Patching... This might take a hot second."
+        echo "Patching... This might take a second."
         mono WfcPatcher.exe --domain wiimmfi.de "$f"
-        echo "Patch complete, you a fuckin' PRO hacker now m8!"
+        echo "Patch complete, win at MKDS!"
     done
 fi
 echo "Searching .app DSiWares..."
@@ -41,9 +41,9 @@ then
     for h in *.app
     do
         echo "Processing $h..."
-        echo "Patching... This might take a hot second."
+        echo "Patching... This might take a second."
         mono WfcPatcher.exe --domain wiimmfi.de "$h"
-        echo "Patch complete, you a fuckin' PRO hacker now m8!"
+        echo "Patch complete, play online!"
     done
 fi
 sleep 5
