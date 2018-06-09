@@ -48,7 +48,7 @@ echo                        $$#$#$#$#$#####$$$$###$#@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 echo                      $$$#$$#$$##$$$$$$$$#####$$#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$$$$##$#@@@@@@@@@@###$$$##*#/
 echo                   #$$$#$$$$$$$$$$$$$$$$###$$#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$$(((#$$$$$$$$$$$$$$$$#@#*#/
 echo                  $$$$$$$$$$$$$$$$$$$$####$##@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$$(/(#$$$$$$$#############*/
-echo                 $$$$$$$$$$$$$##($(*####$$$@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$$(/(#$$$$$#$#/#(#########*/
+echo                 $$$$$$$$$$$$$##($(*####$$$@@@@@@@@@@@@@@@@@@@@Hello, World@@@@@@@@@@@@@@@@@@@@@@$$(/(#$$$$$#$#/#(#########*/
 echo                 $##$#$$$$$$$$$$$$$($##$$(@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$$(/(#$#(#$$$@$#/$########/*
 echo                  ########$#$$$$$$$###$###@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$$(/(#$@$(/$#####$$#######(*
 echo                   $$###########$#$$#####$$$##$#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$$(/(######$$$####$(##($##(*
@@ -77,7 +77,7 @@ cls
 echo Let's begin.
 ping 127.0.0.1 -n 3 >NUL
 echo.
-echo Searching for nds/app games...
+echo Searching for DS/DSi games...
 
 if not exist "*.nds" (
    set nonds=1
@@ -141,7 +141,7 @@ set /a patchingok=0
 color 4F
 cls
 echo.
-echo      /-\     O SHIT!
+echo      /-\     Uh-Oh!
 echo     /   \    
 echo    /     \   There was an error while patching.
 echo   /   !   \  
@@ -149,15 +149,15 @@ echo  /         \ Failing module: %modul%
 echo  ----------- 
 echo.
 if %fail%==1 echo Please check that WfcPatcher.exe is in the same directory than patcher.bat.
-if %fail%==1 echo Press Enter To exit.
+if %fail%==1 echo Press [ENTER] To exit.
 if %fail%==1 pause >NUL
 if %fail%==1 goto exit_patcher
 if %fail%==2 echo No nds or app files found. Please put your nds roms / app files into the same directory ar the patcher.bat.
-if %fail%==2 echo Press Enter To exit.
+if %fail%==2 echo Press [ENTER] To exit.
 if %fail%==2 pause >NUL
 if %fail%==2 goto exit_patcher
 echo Unknown Failure. Try downloading the patcher again and extract every file out of it.
-echo Press Enter To exit.
+echo Press [ENTER] To exit.
 pause >NUL
 
 :exit_patcher
@@ -168,7 +168,7 @@ echo Exiting the patcher in...
 if %exiting%==3 echo :---       : 3
 if %exiting%==2 echo :--        : 2
 if %exiting%==1 echo :-         : 1
-if %exiting%==0 echo :          :0
+if %exiting%==0 echo :          : 0
 if %exiting%==0 echo Bye!
 if %exiting%==0 ping localhost -n 2 >NUL
 if %exiting%==0 exit /b 0
