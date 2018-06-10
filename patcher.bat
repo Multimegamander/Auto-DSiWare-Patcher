@@ -1,5 +1,5 @@
 @ECHO OFF
-TITLE Auto DSiWare-Patcher
+TITLE Auto DSiWare Patcher
 COLOR 0F
 
 set /a exiting=10
@@ -79,6 +79,8 @@ ping 127.0.0.1 -n 3 >NUL
 echo.
 echo Searching for DS/DSi games...
 
+if not exist "Patched" mkdir Patched
+
 if not exist "*.nds" (
    set nonds=1
    if not exist "*.app" goto no_files_present
@@ -95,16 +97,17 @@ if exist *.nds (
    set /a rep=0
    cls
    for %%h in ("*.nds") do (
-      echo Patching file [!patching_file!] out of [%file_counter%]
+      echo Patching files...
       echo File name: %%~nh
       set modul=WfcPatcher.exe
       if not exist WfcPatcher.exe goto wfcpatchfail
       WfcPatcher.exe --domain wiimmfi.de "%%h"
+      move "%%~nh (wiimmfi.de).nds" "Patched\%%~nh.nds">NUL
       cls
    )
 )
 if exist *.app (
-   if %nonds%==0 echo Patching nds Roms is done. Now patching DSiWare app files...
+   if %nonds%==0 echo Patching NDS Roms is done. Now patching DSiWare app files...
    if %nonds%==1 echo Patching DSiWare... 
    set modul=no module
    set /a patching_file=1
@@ -114,17 +117,18 @@ if exist *.app (
    set /a rep=0
    cls
    for %%f in ("*.app") do (
-      echo Patching file [!patching_file!] out of [%file_counter%]
+      echo Patching files...
       echo File name: %%~nf
       echo.
       set modul=WfcPatcher.exe
       if not exist WfcPatcher.exe goto wfcpatchfail
-      WfcPatcher.exe --domain wiimmfi.de "%%f"
+      WfcPatcher.exe --domain wiimmfi.de "%%f">NUL
+      move "%%~nf (wiimmfi.de).app" "Patched\%%~nf.app">NUL
       cls
-      echo Patching Complete!
-      echo Press [ENTER] to continue!
-      pause >NUL
    )
+   echo Patching Complete!
+   echo Press [ENTER] to continue!
+   pause >NUL
 )
 goto exit_patcher
 
@@ -163,7 +167,7 @@ pause >NUL
 :exit_patcher
 cls
 color 0F
-if %patchingok%==1 echo Patched Files have a (wiimmfi.de) in the name. Use those patched files if you want to play online.
+if %patchingok%==1 echo Patched Files are located in "Patched". Use them to play online!
 echo Exiting the patcher in...
 if %exiting%==3 echo :---       : 3
 if %exiting%==2 echo :--        : 2
