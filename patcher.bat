@@ -156,7 +156,7 @@ if %fail%==1 echo Please check that WfcPatcher.exe is in the same directory than
 if %fail%==1 echo Press [ENTER] To exit.
 if %fail%==1 pause >NUL
 if %fail%==1 goto exit_patcher
-if %fail%==2 echo No nds or app files found. Please put your nds roms / app files into the same directory ar the patcher.bat.
+if %fail%==2 echo No nds or app files found. Please put your nds roms / app files into the same directory as the patcher.bat.
 if %fail%==2 echo Press [ENTER] To exit.
 if %fail%==2 pause >NUL
 if %fail%==2 goto exit_patcher
