@@ -169,13 +169,20 @@ cls
 color 0F
 if %patchingok%==1 echo Patched Files are located in "Patched". Use them to play online!
 echo Exiting the patcher in...
+if %exiting%==10 echo :----------: 10
+if %exiting%==9 echo :--------- : 9
+if %exiting%==8 echo :--------  : 8
+if %exiting%==7 echo :-------   : 7
+if %exiting%==6 echo :------    : 6
+if %exiting%==5 echo :-----     : 5
+if %exiting%==4 echo :----      : 4
 if %exiting%==3 echo :---       : 3
 if %exiting%==2 echo :--        : 2
 if %exiting%==1 echo :-         : 1
 if %exiting%==0 echo :          : 0
-if %exiting%==0 echo Bye!
 if %exiting%==0 ping localhost -n 2 >NUL
 if %exiting%==0 exit /b 0
 ping localhost -n 2 >NUL
+timeout 1 /nobreak >NUL
 set /a exiting=%exiting%-1
 goto exit_patcher
